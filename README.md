@@ -36,7 +36,7 @@ When the merchant subscribes to receive notifications, bKash will send a **Subsc
 ### Request URL
 
 ```
-{{BASE_URL}}/webhooks/notifications?shunno_id=sas-internet-2552&client_app=NETFEE
+{{BASE_URL}}/webhooks/notifications?shunno_id=<shunno_id>&client_app=<client_app>
 ```
 
 ### HTTP Method
@@ -45,11 +45,10 @@ When the merchant subscribes to receive notifications, bKash will send a **Subsc
 
 ### Headers
 
-The following headers are included in the request:
+The following headers are required in the request:
 
-- `x-amz-sns-message-type`: SubscriptionConfirmation
-- `x-amz-sns-message-id`: A unique message ID
-- `x-amz-sns-topic-arn`: Topic ARN
+- `x-app-secret`: Application-specific secret key.
+- `x-client-secret`: Client-specific secret key.
 
 ### Request Body
 
@@ -70,13 +69,14 @@ The following headers are included in the request:
 
 ### Query Parameters
 
-- `shunno_id`: The unique identifier of the client or merchant (e.g., `sas-internet-2552`).
+- `shunno_id`: The unique identifier of the client or merchant (e.g., `3860`).
 - `client_app`: Specifies the application initiating the request. The possible values are:
   - **NETFEE**
   - **HISABNIKASH**
   - **BAYANNOPAY**
   - **SHUNNOIT**
-  - **ROOT\_BILLING**
+  - **ROOT_BILLING**
+  - **SILICON_ISP**
 
 ### Response
 
@@ -98,7 +98,7 @@ Once a payment transaction is successfully completed, bKash will send a **Paymen
 ### Request URL
 
 ```
-{{BASE_URL}}/webhooks/notifications?shunno_id=sas-internet-2552&client_app=NETFEE
+{{BASE_URL}}/webhooks/notifications?shunno_id=<shunno_id>&client_app=<client_app>
 ```
 
 ### HTTP Method
@@ -107,11 +107,10 @@ Once a payment transaction is successfully completed, bKash will send a **Paymen
 
 ### Headers
 
-The following headers are included in the request:
+The following headers are required in the request:
 
-- `x-amz-sns-message-type`: Notification
-- `x-amz-sns-message-id`: A unique message ID
-- `x-amz-sns-topic-arn`: Topic ARN
+- `x-app-secret`: Application-specific secret key.
+- `x-client-secret`: Client-specific secret key.
 
 ### Request Body
 
@@ -143,7 +142,7 @@ The following headers are included in the request:
 
 ### Query Parameters
 
-- `shunno_id`: The unique identifier of the client or merchant (e.g., `sas-internet-2552`).
+- `shunno_id`: The unique identifier of the client or merchant (e.g., `3860`).
 - `client_app`: Specifies the application initiating the request. The possible values are:
   - **NETFEE**
   - **HISABNIKASH**
@@ -169,7 +168,7 @@ This response indicates that the payment notification has been successfully proc
 1. **shunno\_id**
 
    - **Description**: The `shunno_id` is a unique identifier assigned to each merchant or client subscribing to the webhook. This ensures that each client’s webhook notifications are properly routed to them.
-   - **Example**: `shunno_id=sas-internet-2552`
+   - **Example**: `shunno_id=3860`
 
 2. **client\_app**
 
@@ -184,11 +183,45 @@ This response indicates that the payment notification has been successfully proc
 
 ---
 
+## Error Codes
+
+The following error codes may be returned during API usage:
+
+- **404 Not Found**:
+  ```json
+  {
+      "code": 404,
+      "message": "Not Found"
+  }
+  ```
+  This error indicates that the requested resource or endpoint could not be found.
+
+- **401 Invalid App or Client Secret**:
+  ```json
+  {
+      "code": 401,
+      "message": "Invalid app or client secret"
+  }
+  ```
+  This error indicates that the provided `x-app-secret` or `x-client-secret` is incorrect.
+
+- **409 Duplicate Payment**:
+  ```json
+  {
+      "code": 409,
+      "message": "Duplicate payment"
+  }
+  ```
+  This error indicates that a payment with the same transaction ID has already been processed.
+
+---
+
 ## Support Contact
 
 For any integration issues or questions, feel free to reach out to **ShunnoIT**:
 
-- **Email**: [shahadat.cseru@gmail.com](mailto\:shahadat.cseru@gmail.com)
+- **Email**: [shahadat.cseru@gmail.com](mailto:shahadat.cseru@gmail.com)
 - **Phone**: +8801717541865
 
 Our team is available to assist you with any challenges you may encounter during integration or setup.
+
