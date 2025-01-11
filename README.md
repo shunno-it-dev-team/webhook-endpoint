@@ -222,7 +222,7 @@ The following error codes may be returned during API usage:
 
 For any integration issues or questions, feel free to reach out to **ShunnoIT**:
 
-- **Email**: [shahadat.cseru@gmail.com](mailto:shahadat.cseru@gmail.com)
+- **Email**: [shunnosoftware@gmail.com](shunnosoftware@gmail.com)
 - **Phone**: +880 1321-141784
 
 Our team is available to assist you with any challenges you may encounter during integration or setup.
