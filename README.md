@@ -49,6 +49,7 @@ The following headers are required in the request:
 
 - `x-app-secret`: Application-specific secret key.
 - `x-client-secret`: Client-specific secret key.
+- `x-method-id`: Payment Method-specific id.
 
 ### Request Body
 
@@ -111,6 +112,7 @@ The following headers are required in the request:
 
 - `x-app-secret`: Application-specific secret key.
 - `x-client-secret`: Client-specific secret key.
+- `x-method-id`: Payment Method-specific id.
 
 ### Request Body
 
@@ -221,7 +223,7 @@ The following error codes may be returned during API usage:
 For any integration issues or questions, feel free to reach out to **ShunnoIT**:
 
 - **Email**: [shahadat.cseru@gmail.com](mailto:shahadat.cseru@gmail.com)
-- **Phone**: +8801717541865
+- **Phone**: [+880 1321-141784] (tel:+8801321141784)
 
 Our team is available to assist you with any challenges you may encounter during integration or setup.
 
